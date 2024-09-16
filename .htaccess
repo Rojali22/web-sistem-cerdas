@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /skripsi/
+
+# Remap urls
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Protect application and system files
+RewriteCond %{REQUEST_URI} ^/(system|application)
+RewriteRule ^(.*)$ - [F,L]
